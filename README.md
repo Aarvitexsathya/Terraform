@@ -14,17 +14,23 @@ code:
 =======
 provider "aws" {
   region = "us-east-1"
-
+  alias  = "North-Virginia"
+}
+provider "aws" {
+  region = "us-east-2"
+  alias  = "ohio"
 }
 
-resource "aws_instance" "sample" {
-  ami           = "ami-0c101f26f147fa7fd"
+resource "aws_instance" "Tf-class1" {
+  ami           = "ami-0100e595e1cc1ff7f"
   instance_type = "t2.micro"
+  provider = aws.ohio
   tags = {
-    Name = "sample"
+    Name     = "Tf-class1"
+    TeamName = "Devops"
   }
 
-} 
+}
 
 terraform lifecycle:
 ====================
